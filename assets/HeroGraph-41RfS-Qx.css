@@ -1,0 +1,1 @@
+.graph-labels{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none}.graph-label{font-family:var(--font-mono);font-size:11px;color:#ececf18c;letter-spacing:.04em;white-space:nowrap;transition:color .3s}.graph-label.active{color:#fff;text-shadow:0 0 12px rgb(56 214 245 / .8)}
