@@ -1,14 +1,105 @@
 @import 'tailwindcss';
 
-@theme {
-  --breakpoint-xs: 20rem;
-  --font-knewave: 'Knewave';
-  --color-primary: #fd7e14;
-  --color-secondary: #858585;
-  --color-pink-bg: #fdc3dc;
-  --color-dark-bg: rgba(0, 0, 0, 0.9);
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --fg: #15151c;
+  --muted: #5d5d6c;
+  --line: rgb(0 0 0 / 0.1);
+  --accent: #e8590c;
+  --cyan: #0e8aa6;
+}
+
+:root[data-theme='dark'] {
+  --bg: #07070c;
+  --surface: #111119;
+  --fg: #ececf1;
+  --muted: #9b9bad;
+  --line: rgb(255 255 255 / 0.09);
+  --accent: #fd7e14;
+  --cyan: #38d6f5;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-cyan: var(--cyan);
+  --font-display: 'Knewave', cursive;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background-color: #fffbdc;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.4s,
+    color 0.4s;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+  }
+}
+
+/* v-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* v-tilt */
+.tilt {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .tilt {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

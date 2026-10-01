@@ -1,17 +1,26 @@
 <!doctype html>
-<html lang="">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/src/assets/L.svg" />
+    <meta
+      name="description"
+      content="Ananda Kongkoed. Backend engineer (Go) and full-stack developer, Application Developer at T.C.C Technology, Computer Engineering at Mahidol University."
+    />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/L.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Knewave&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Knewave&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-
-    <title>Ananda Portfolio</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark'
+      } catch {}
+    </script>
+    <title>Ananda Kongkoed · Backend Engineer</title>
   </head>
   <body>
     <div id="app"></div>
